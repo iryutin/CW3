@@ -12,12 +12,10 @@ load_dotenv()
 class DBConfig:
     """Конфигурация подключения к базе данных"""
 
-    host: str = "localhost"
-    user: str = "postgres"
-    password: str = os.getenv(
-        "DB_PASSWORD", ""
-    )  # Пароль только из переменных окружения
-    port: str = "5432"
+    host: str = os.getenv("DB_HOST")
+    user: str = os.getenv("DB_USER")
+    password: str = os.getenv("DB_PASSWORD", "")
+    port: str = os.getenv("DB_PORT")
     dbname: str = "hh_vacancies"
 
     def get_connection_dict(self) -> dict:
